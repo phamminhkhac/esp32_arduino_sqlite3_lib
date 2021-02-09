@@ -265,7 +265,7 @@ int encodeUnicode(char *out, int ol, int32_t code, int32_t prev_code) {
   //const byte codes[8] = {0x00, 0x42, 0x83, 0xA3, 0xC3, 0xE4, 0xF5, 0xFD};
   const byte codes[6] = {0x01, 0x82, 0xC3, 0xE4, 0xF5, 0xFD};
   int32_t till = 0;
-  int orig_ol = ol;
+  //int orig_ol = ol;
   for (int i = 0; i < 5; i++) {
     till += (1 << uni_bit_len[i]);
     int32_t diff = abs(code - prev_code);
@@ -418,7 +418,7 @@ int matchLine(const char *in, int len, int l, char *out, int *ol, struct us_lnk_
 
 int unishox1_compress(const char *in, int len, char *out, struct us_lnk_lst *prev_lines) {
 
-  char *ptr;
+  //char *ptr;
   byte bits;
   byte state;
 
@@ -917,7 +917,7 @@ uint64_t decode_unsigned_varint(const uint8_t *data, int *decoded_bytes) {
 void print_string_as_hex(char *in, int len) {
 
   int l;
-  byte bit;
+  //byte bit;
   printf("String in hex:\n");
   for (l=0; l<len; l++) {
     printf("%x, ", (unsigned char) in[l]);
@@ -965,11 +965,11 @@ int main(int argv, char *args[]) {
 
 char cbuf[1024];
 char dbuf[1024];
-long len, tot_len, clen, ctot, dlen, l;
+long len, tot_len, clen, ctot, dlen/*, l*/;
 float perc;
 FILE *fp, *wfp;
 int bytes_read;
-char c_in;
+//char c_in;
 uint32_t tStart;
 
 tStart = getTimeVal();

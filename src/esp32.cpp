@@ -161,7 +161,7 @@ static int ESP32Read(
 ){
       //Serial.println("fn: Read");
   ESP32File *p = (ESP32File*)pFile;
-  off_t ofst;                     /* Return value from lseek() */
+  // off_t ofst;                     /* Return value from lseek() */
   int nRead;                      /* Return value from read() */
   int rc;                         /* Return code from ESP32FlushBuffer() */
 
@@ -176,7 +176,7 @@ static int ESP32Read(
     return rc;
   }
 
-  ofst = fseek(p->fp, iOfst, SEEK_SET); //lseek(p->fd, iOfst, SEEK_SET);
+  fseek(p->fp, iOfst, SEEK_SET); //lseek(p->fd, iOfst, SEEK_SET);
   //if( ofst != 0 ){
   //  return SQLITE_IOERR_READ;
   //}
@@ -286,7 +286,7 @@ static int ESP32FileSize(sqlite3_file *pFile, sqlite_int64 *pSize){
       //Serial.println("fn: FileSize");
   ESP32File *p = (ESP32File*)pFile;
   int rc;                         /* Return code from fstat() call */
-  struct stat sStat;              /* Output of fstat() call */
+  // struct stat sStat;              /* Output of fstat() call */
 
   /* Flush the contents of the buffer to disk. As with the flush in the
   ** ESP32Read() method, it would be possible to avoid this and save a write
@@ -410,7 +410,7 @@ static int ESP32Open(
   };
 
   ESP32File *p = (ESP32File*)pFile; /* Populate this structure */
-  int oflags = 0;                 /* flags to pass to open() call */
+  // int oflags = 0;                 /* flags to pass to open() call */
   char *aBuf = 0;
 	char mode[5];
       //Serial.println("fn: Open");
@@ -647,7 +647,7 @@ static void shox96_0_2c(sqlite3_context *context, int argc, sqlite3_value **argv
 }
 
 static void shox96_0_2d(sqlite3_context *context, int argc, sqlite3_value **argv) {
-  unsigned int nIn, nOut, rc;
+  unsigned int nIn, nOut/*, rc*/;
   const unsigned char *inBuf;
   unsigned char *outBuf;
   long int nOut2;
@@ -697,7 +697,7 @@ static void unishox1c(sqlite3_context *context, int argc, sqlite3_value **argv) 
 }
 
 static void unishox1d(sqlite3_context *context, int argc, sqlite3_value **argv) {
-  unsigned int nIn, nOut, rc;
+  unsigned int nIn, nOut/*, rc*/;
   const unsigned char *inBuf;
   unsigned char *outBuf;
   long int nOut2;
